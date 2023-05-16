@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  chassets-api-uat:
+    build:
+      context: ../../
+      dockerfile: docker/uat/Dockerfile
+    image: chassets-api-uat
+    ports: 
+      - '9152:9143'
+    networks:
+      - hub_default
+ 
+networks:
+  hub_default:
+    external: true

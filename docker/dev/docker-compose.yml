@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  chassets-api-dev:
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    image: chassets-api-dev
+    ports:
+      - '9151:9143'
+    networks:
+      - hub_default
+
+networks:
+  hub_default:
+    external: true

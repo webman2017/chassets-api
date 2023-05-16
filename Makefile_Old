@@ -1,0 +1,13 @@
+.PHONY: run-service run-service-ssl
+
+run-service:
+	-docker stop hub-quotation-container
+	-docker rm hub-quotation-container
+	-docker image rm hub-quotation
+	docker build -t hub-quotation . && docker run --name hub-quotation-container -p 9143:9143 -d hub-quotation
+
+run-service-ssl:
+	-docker stop hub-quotation-ssl
+	-docker rm hub-quotation-ssl
+	-docker image rm hub-quotation-ssl
+	docker build -t hub-quotation-ssl . && docker run --name hub-quotation-ssl --network hub_default -p 3082:9143 -d hub-quotation-ssl
